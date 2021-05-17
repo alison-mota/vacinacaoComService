@@ -24,7 +24,8 @@ public class UsuarioController {
         //Valida se já existe um usuário com o E-mail ou CPF recebidos.
         usuarioService.validaDados(request);
 
-        usuarioService.converterESalvar(request);
+        //Converte o objeto Request para outro do tipo Usuario e salva no banco.
+        usuarioService.converteESalva(request);
         return ResponseEntity.status(HttpStatus.CREATED).body("Usuário cadastrado!");
 
 

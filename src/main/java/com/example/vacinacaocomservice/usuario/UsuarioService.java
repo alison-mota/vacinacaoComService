@@ -22,7 +22,7 @@ public class UsuarioService {
         }
     }
 
-    public void converterESalvar(UsuarioRequest request) {
+    public void converteESalva(UsuarioRequest request) {
         Usuario usuario = request.toModel();
         usuarioRepository.save(usuario);
     }
