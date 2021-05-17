@@ -17,10 +17,12 @@ public class VacinacaoService {
         this.usuarioRepository = usuarioRepository;
     }
 
+    //Método responsável por devolver um objeto tipo Usuário ou tratar Null/branco
     public Usuario localizaUsuario(Long id) {
         return usuarioRepository.findById(id).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuário não encontrado"));
     }
 
+    //Método responsável por converter um objeto Request para uma Vacinação e salvar no banco
     public void salvaVacina(Usuario usuarioModel, VacinacaoRequest request) {
         Vacinacao vacinacao = request.toModel(usuarioModel);
         vacinacaoRepository.save(vacinacao);

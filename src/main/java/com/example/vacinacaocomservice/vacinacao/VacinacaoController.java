@@ -19,8 +19,11 @@ public class VacinacaoController {
 
     @PostMapping("/usuario/{usuarioId}")
     public ResponseEntity<String> novaVacinacao(@Valid @RequestBody VacinacaoRequest request, @PathVariable Long usuarioId){
+
+        //Método responsável por devolver um objeto tipo Usuário ou tratar Null/branco
         Usuario usuarioModel = vacinacaoService.localizaUsuario(usuarioId);
 
+        //Método responsável por converter um objeto Request para uma Vacinação e salvar no banco
         vacinacaoService.salvaVacina(usuarioModel, request);
         return ResponseEntity.status(HttpStatus.CREATED).body("Vacinação salva!");
 
